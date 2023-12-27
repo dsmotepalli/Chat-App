@@ -63,7 +63,7 @@ const GroupChatModal = ({ children }) => {
       };
 
       const { data } = await axios.get(
-        `http://localhost:5000/api/user?search=${search}`,
+        `https://chat-app-1mzo.onrender.com/api/user?search=${search}`,
         config
       );
       setLoading(false);
@@ -92,7 +92,7 @@ const GroupChatModal = ({ children }) => {
         },
       };
       const { data } = await axios.post(
-        `http://localhost:5000/api/chat/group`,
+        `https://chat-app-1mzo.onrender.com/api/chat/group`,
         {
           name: groupChatName,
           users: JSON.stringify(selectedUsers.map((u) => u._id)),
@@ -132,7 +132,7 @@ const GroupChatModal = ({ children }) => {
         isOpen={isOpen}
         onClose={() => {
           setSelectedUsers([]);
-          setSearch('');
+          setSearch("");
           setGroupChatName("");
           setSearchResult([]);
           onClose();

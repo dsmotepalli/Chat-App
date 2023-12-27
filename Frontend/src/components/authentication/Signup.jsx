@@ -20,7 +20,6 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { userAtom } from "../../store/state";
 
-
 const Signup = () => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
@@ -69,7 +68,6 @@ const Signup = () => {
           data
         )
         .then((response) => {
-         
           setPic(response.data.url.toString());
           setLoading(false);
           toast({
@@ -118,7 +116,7 @@ const Signup = () => {
         },
       };
       const { data } = await axios.post(
-        "http://localhost:5000/api/user",
+        "https://chat-app-1mzo.onrender.com/api/user",
         { name, email, password, pic },
         config
       );
@@ -131,7 +129,7 @@ const Signup = () => {
       });
 
       localStorage.setItem("user-info", JSON.stringify(data));
-      setUser(data)
+      setUser(data);
       setLoading(false);
       navigate("/chats");
     } catch (error) {

@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { chatsAtom, fetchAgainAtom, selectedChatAtom, userAtom } from "../store/state";
+import {
+  chatsAtom,
+  fetchAgainAtom,
+  selectedChatAtom,
+  userAtom,
+} from "../store/state";
 import { Box, Button, Skeleton, Stack, Text, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { AddIcon } from "@chakra-ui/icons";
 import { getSender } from "../config/chatLogics";
 import GroupChatModal from "./miscellaneous/GroupChatModal";
-
 
 const MyChats = () => {
   const [selectedChat, setSelectedChat] = useRecoilState(selectedChatAtom);
@@ -14,7 +18,7 @@ const MyChats = () => {
   const user = useRecoilValue(userAtom);
   const [loggedUser, setLoggedUser] = useState();
   const fetchAgain = useRecoilValue(fetchAgainAtom);
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const toast = useToast();
   const userInfo = JSON.parse(localStorage.getItem("user-info"));
 
@@ -29,7 +33,7 @@ const MyChats = () => {
       };
 
       const { data } = await axios.get(
-        `http://localhost:5000/api/chat/`,
+        `https://chat-app-1mzo.onrender.com/api/chat/`,
         config
       );
       setLoading(false);
@@ -47,7 +51,7 @@ const MyChats = () => {
   };
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("user-info")));
-    console.log(user)
+    console.log(user);
     fetchChats();
   }, [fetchAgain]);
 
@@ -100,7 +104,6 @@ const MyChats = () => {
                 <Box
                   onClick={() => setSelectedChat(chat)}
                   cursor="pointer"
-                  
                   bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
                   color={selectedChat === chat ? "white" : "black"}
                   px={3}
@@ -126,11 +129,11 @@ const MyChats = () => {
             </Stack>
           ) : (
             <Stack>
-              <Skeleton  height="45px" />
-              <Skeleton  height="45px" />
-              <Skeleton  height="45px" />
-              <Skeleton  height="45px" />
-              <Skeleton  height="45px" />
+              <Skeleton height="45px" />
+              <Skeleton height="45px" />
+              <Skeleton height="45px" />
+              <Skeleton height="45px" />
+              <Skeleton height="45px" />
             </Stack>
           )}
         </Box>

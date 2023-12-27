@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { fetchAgainAtom, notificationAtom, selectedChatAtom, userAtom } from "../store/state";
+import {
+  fetchAgainAtom,
+  notificationAtom,
+  selectedChatAtom,
+  userAtom,
+} from "../store/state";
 import {
   Box,
   FormControl,
@@ -22,7 +27,7 @@ import io from "socket.io-client";
 import Lottie from "react-lottie";
 import animationData from "../Animation/typing.json";
 let timer1;
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = "https://chat-app-1mzo.onrender.com";
 var socket, selectedChatCompare;
 const SingleChat = () => {
   const [fetchAgain, setFetchAgain] = useRecoilState(fetchAgainAtom);
@@ -35,7 +40,7 @@ const SingleChat = () => {
   const [socketConnection, setSocketConnection] = useState(false);
   const [typing, setTyping] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
-  const [notification,setNotification] = useRecoilState(notificationAtom)
+  const [notification, setNotification] = useRecoilState(notificationAtom);
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -50,7 +55,7 @@ const SingleChat = () => {
     console.log(user);
     socket.emit("setup", user);
     socket.on("connected", () => setSocketConnection(true));
-    
+
     socket.on("typing", () => setIsTyping(true));
     socket.on("stop typing", () => setIsTyping(false));
     return () => {
@@ -65,8 +70,8 @@ const SingleChat = () => {
         selectedChatCompare._id !== newMessageReceived.chat._id
       ) {
         //give notification
-        if(!notification.includes(newMessageReceived)){
-          setNotification([newMessageReceived,...notification]);
+        if (!notification.includes(newMessageReceived)) {
+          setNotification([newMessageReceived, ...notification]);
           setFetchAgain(!fetchAgain);
         }
       } else {
@@ -85,7 +90,7 @@ const SingleChat = () => {
       };
       setLoading(true);
       const { data } = await axios.get(
-        `http://localhost:5000/api/message/${selectedChat._id}`,
+        `https://chat-app-1mzo.onrender.com/api/message/${selectedChat._id}`,
         config
       );
       console.log(data);
@@ -110,7 +115,7 @@ const SingleChat = () => {
 
   const sendMessage = async (e) => {
     if (e.key === "Enter" && newMessage) {
-      socket.emit('stop typing',selectedChat._id)
+      socket.emit("stop typing", selectedChat._id);
       try {
         const config = {
           headers: {
@@ -119,7 +124,7 @@ const SingleChat = () => {
         };
         setNewMessage("");
         const { data } = await axios.post(
-          "http://localhost:5000/api/message",
+          "https://chat-app-1mzo.onrender.com/api/message",
           {
             content: newMessage,
             chatId: selectedChat._id,
@@ -149,9 +154,8 @@ const SingleChat = () => {
       setTyping(true);
       socket.emit("typing", selectedChat._id);
     }
-    clearTimeout(timer1)
-     timer1 = setTimeout(() => {
-      
+    clearTimeout(timer1);
+    timer1 = setTimeout(() => {
       socket.emit("stop typing", selectedChat._id);
       setTyping(false);
       console.log("stop typing sent");
