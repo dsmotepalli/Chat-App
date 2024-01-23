@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "private": true,
-  "proxy": "https://chat-app-mma.vercel.app/",
+  "proxy": "https://chat-app-4fhq.onrender.com",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

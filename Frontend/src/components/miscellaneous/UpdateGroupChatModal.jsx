@@ -59,7 +59,7 @@ const UpdateGroupChatModal = () => {
         },
       };
       const { data } = await axios.put(
-        `https://chat-app-mma.vercel.app//api/chat/groupremove`,
+        `https://chat-app-4fhq.onrender.com/api/chat/groupremove`,
         {
           chatId: selectedChat._id,
           userId: user1._id,
@@ -116,7 +116,7 @@ const UpdateGroupChatModal = () => {
         },
       };
       const { data } = await axios.put(
-        `https://chat-app-mma.vercel.app//api/chat/groupadd`,
+        `https://chat-app-4fhq.onrender.com/api/chat/groupadd`,
         {
           chatId: selectedChat._id,
           userId: user1._id,
@@ -151,7 +151,7 @@ const UpdateGroupChatModal = () => {
       };
 
       const { data } = await axios.put(
-        "https://chat-app-mma.vercel.app//api/chat/rename",
+        "https://chat-app-4fhq.onrender.com/api/chat/rename",
         {
           chatId: selectedChat._id,
           chatName: groupChatName,
@@ -191,7 +191,7 @@ const UpdateGroupChatModal = () => {
       };
 
       const { data } = await axios.get(
-        `https://chat-app-mma.vercel.app//api/user?search=${search}`,
+        `https://chat-app-4fhq.onrender.com/api/user?search=${search}`,
         config
       );
       setLoading(false);

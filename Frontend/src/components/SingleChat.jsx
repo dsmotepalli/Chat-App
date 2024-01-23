@@ -27,7 +27,7 @@ import io from "socket.io-client";
 import Lottie from "react-lottie";
 import animationData from "../Animation/typing.json";
 let timer1;
-const ENDPOINT = "https://chat-app-mma.vercel.app/";
+const ENDPOINT = "https://chat-app-4fhq.onrender.com";
 var socket, selectedChatCompare;
 const SingleChat = () => {
   const [fetchAgain, setFetchAgain] = useRecoilState(fetchAgainAtom);
@@ -90,7 +90,7 @@ const SingleChat = () => {
       };
       setLoading(true);
       const { data } = await axios.get(
-        `https://chat-app-mma.vercel.app//api/message/${selectedChat._id}`,
+        `https://chat-app-4fhq.onrender.com/api/message/${selectedChat._id}`,
         config
       );
       console.log(data);
@@ -124,7 +124,7 @@ const SingleChat = () => {
         };
         setNewMessage("");
         const { data } = await axios.post(
-          "https://chat-app-mma.vercel.app//api/message",
+          "https://chat-app-4fhq.onrender.com/api/message",
           {
             content: newMessage,
             chatId: selectedChat._id,

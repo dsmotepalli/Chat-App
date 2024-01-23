@@ -116,7 +116,7 @@ const Signup = () => {
         },
       };
       const { data } = await axios.post(
-        "https://chat-app-mma.vercel.app//api/user",
+        "https://chat-app-4fhq.onrender.com/api/user",
         { name, email, password, pic },
         config
       );
