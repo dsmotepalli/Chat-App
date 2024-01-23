@@ -70,7 +70,7 @@ const SideDrawer = () => {
       };
 
       const { data } = await axios.post(
-        `https://chat-app-1mzo.onrender.com/api/chat`,
+        `https://chat-app-mma.vercel.app//api/chat`,
         { userId },
         config
       );
@@ -109,7 +109,7 @@ const SideDrawer = () => {
       };
 
       const { data } = await axios.get(
-        `https://chat-app-1mzo.onrender.com/api/user?search=${search}`,
+        `https://chat-app-mma.vercel.app//api/user?search=${search}`,
         config
       );
 

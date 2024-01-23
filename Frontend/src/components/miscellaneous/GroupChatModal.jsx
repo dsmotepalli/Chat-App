@@ -63,7 +63,7 @@ const GroupChatModal = ({ children }) => {
       };
 
       const { data } = await axios.get(
-        `https://chat-app-1mzo.onrender.com/api/user?search=${search}`,
+        `https://chat-app-mma.vercel.app//api/user?search=${search}`,
         config
       );
       setLoading(false);
@@ -92,7 +92,7 @@ const GroupChatModal = ({ children }) => {
         },
       };
       const { data } = await axios.post(
-        `https://chat-app-1mzo.onrender.com/api/chat/group`,
+        `https://chat-app-mma.vercel.app//api/chat/group`,
         {
           name: groupChatName,
           users: JSON.stringify(selectedUsers.map((u) => u._id)),

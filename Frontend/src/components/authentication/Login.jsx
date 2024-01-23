@@ -50,7 +50,7 @@ const Login = () => {
         },
       };
       const { data } = await axios.post(
-        "https://chat-app-1mzo.onrender.com/api/user/login",
+        "https://chat-app-mma.vercel.app//api/user/login",
         { email, password },
         config
       );

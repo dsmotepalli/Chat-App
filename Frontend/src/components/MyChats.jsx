@@ -33,7 +33,7 @@ const MyChats = () => {
       };
 
       const { data } = await axios.get(
-        `https://chat-app-1mzo.onrender.com/api/chat/`,
+        `https://chat-app-mma.vercel.app//api/chat/`,
         config
       );
       setLoading(false);
