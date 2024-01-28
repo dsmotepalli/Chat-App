@@ -32,8 +32,7 @@ function App() {
         borderRadius="full"
         fontFamily={"Work sans"}
         fontSize={16}
-        
-        fontWeight={'bold'}
+        fontWeight={"bold"}
       >
         Made by&nbsp;
         <a
